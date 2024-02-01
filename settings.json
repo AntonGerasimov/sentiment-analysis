@@ -1,0 +1,13 @@
+{
+    "general": {
+        "random_state": 42,
+        "datetime_format": "%d.%m.%Y_%H.%M",
+        "raw_data_dir": "data/row"
+    },
+    "train": {
+        "table_name": "train.csv"
+    },
+    "inference": {
+        "table_name": "test.csv"
+    }
+}
