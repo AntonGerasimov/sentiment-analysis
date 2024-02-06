@@ -49,7 +49,36 @@ In common words notebook I found, that there are a lot of words, that are presen
 
 ## Finding best model
 
-You can find comparation of the models in find_best_model notebok.
+You can find comparation of the models in find_best_model notebok. I found, that in my case the best model is Logistic Regression. It shows best metrics and it evaluates faster than others.
+
+In my train.py logistic regression shows
+
+- accuracy: 
+
+## Python scripts
+
+In my python scripts I got 87.2% mean cross validation accuracy on train dataset. For inference dataset I got:
+
+- accuracy = 87.4%
+- recall = 87.1%
+- f1 score = 87.4%
+
+I think, my model gives quite a good performance. It may be improved with help of using neuron networks or maybe by better feature engineering, i.e. finding more common_words, using different min_df and max_df for tf-idf etc. However, this approaches requires a lot of more research. As the first step, I suppose my model is good.
+
+## Potential business applications and value for business
+
+
+- Film recommendation system. My sentiment classification model may help to increase accuracy of recommendations on some film aggregators. With understanding the sentiment of reviews, users can be better alligned with their preferences (i.e. if user has positive review to a film, he will see movies of same director/main actor etc in his recommendations).
+
+- This model can help film aggregators to choose popular films and to create some pages with selectioned movies, like 'Best movies of 2023', 'Best horrors' etc. This can increase users time-spending on the platform.
+
+- Marketing. Film makers, studios, distributors may want to understand, what are current trends of mass-market movies, i.e. they may want to understand, what genres are in trends. Where to invest the money?
+
+- Content moderation. Similar to previous, but here film aggregators may want to add new films to their library, or to delete unpopular ones
+
+- Advertisement. Companies may see the difference in people sentiments before and after promotional campaigns/ before and after merchandise etc. Also companies may realize, that their film is worth watching or not for most of the people, based on early reviews. This can help to decide, if they need to make more promotion in order to attract people or not to waste more money.
+
+
 
 # MLE part
 
