@@ -2,12 +2,39 @@
     "general": {
         "random_state": 42,
         "datetime_format": "%d.%m.%Y_%H.%M",
-        "raw_data_dir": "data/row"
+        "raw_data_dir": "data/raw",
+        "processed_data_dir" : "data/processed",
+        "models_dir" : "outputs/models",
+        "vectorizer_dir" : "outputs/vectorizer",
+        "predictions_dir" : "outputs/predictions",
+        "figures_dir" : "outputs/figures",
+        "model_name" : "log_reg.pkl",
+        "vectorizer_name" : "vectorizer.pkl"
+    },
+    "raw": {
+        "train_name" : "train.csv",
+        "test_name" : "test.csv"
     },
     "train": {
-        "table_name": "train.csv"
+        "table_name": "train.csv",
+        "common_words_file_name": "common_words.txt",
+        "train_name" : "train.csv",
+        "test_name" : "test.csv"
+    },
+    "tf_idf": {
+        "max_features" : "2500",
+        "min_df" : "0.4",
+        "max_df" : "0.9"
+    },
+    "log_reg" :{
+        "C": "1.0", 
+        "penalty": "l2"
     },
     "inference": {
-        "table_name": "test.csv"
+        "table_name": "test.csv",
+        "test_name": "test.csv",
+        "preferred_model" : "all",
+        "metrics_file" : "metrics.txt",
+        "predictions_file" : "predictions.csv"
     }
 }
