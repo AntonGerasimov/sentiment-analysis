@@ -55,9 +55,9 @@ I compared tf-idf with different max_features parameters and bag of words. As yo
 
 For my calculations in train.py I use tf-idf with max_features = 2000. You can change this parameter (and min_df and max_df also) in settings.json.
 
-In common words notebook I found, that there are a lot of words, that are presented in only one copy (unique words) in reviews. We can't really predict impact of this words on outcome. min_df = 7 removes this rare words. max_df = 0.95 (close to default value 1.0). It cut's off words, that appears too often. I already deleted most frequently common words. With help of this parameter, it cuts off even more frequently used words. From my experience values between 0.9 and 1.0 have no impact on final metrics. I chose 'middle' value, because for me it looks reasonable to exclude most frequently used words. We may not use common_words function and just use max_df, but my common_words are part of EDA also. common words notebook shows this words in train data.
+In common words notebook I found, that there are a lot of words, that are presented in only one copy (unique words) in reviews. We can't really predict impact of this words on outcome. min_df = 7 removes this rare words. max_df = 0.8 (default value 1.0). It cut's off words, that appears too often. I already deleted most frequently common words. With help of this parameter, it cuts off even more frequently used words. From my experience values between 0.8 and 1.0 have no impact on final metrics. I chose 0.8 value, because for me it looks reasonable to exclude most frequently used words. We may not use common_words function and just use max_df, but my common_words are part of EDA also. common words notebook shows this words in train data. However, there will be no rare words in top 2000 features anyway.
 
-Summing up, tf-idf with max_features = 2000, min_df = 7, max_df = 0.95 have almost same metrics, but a lot higher computational performance.
+Summing up, tf-idf with max_features = 2000, min_df = 7, max_df = 0.8 have almost same metrics, but a lot higher computational performance.
 
 ## Preprocessing pipeline
 
@@ -89,9 +89,14 @@ You can find comparation of the models in find_best_model notebok. I found, that
 
 In my python scripts I got 87.2% mean cross validation accuracy on train dataset. For inference dataset I got:
 
-- accuracy = 87.4%
+- accuracy = 87.5%
 - recall = 87.1%
 - f1 score = 87.4%
+
+This results are a little bit worse, than in find_best_model notebook. This can be caused by several reasons: 
+
+- somewhere in the code I didn't consider randomization properly
+- 
 
 I think, my model gives quite a good performance. It may be improved with help of using neuron networks or maybe by better feature engineering, i.e. finding more common_words, using different min_df and max_df for tf-idf etc. However, this approaches requires a lot of more research. As the first step, I suppose my model is good.
 
@@ -111,6 +116,11 @@ I think, my model gives quite a good performance. It may be improved with help o
 
 
 # MLE part
+
+## Project structure
+
+Project organizes as follows.
+Data folder contains raw folder (initial data) and processed folder (preprocessed data). Models and vectorizators are saved in outputs folder (/outputs/models and /outputs/vectorizer). Final results on inference are saved in /outputs/predictions.
 
 ## Initial preparations
 
