@@ -120,13 +120,20 @@ I think, my model gives quite a good performance. It may be improved with help o
 ## Project structure
 
 Project organizes as follows.
-Data folder contains raw folder (initial data) and processed folder (preprocessed data). Models and vectorizators are saved in outputs folder (/outputs/models and /outputs/vectorizer). Final results on inference are saved in /outputs/predictions.
+Data folder contains raw folder (initial data) and processed folder (preprocessed data). Models and vectorizers are saved in outputs folder (/outputs/models and /outputs/vectorizer). Final results on inference are saved in /outputs/predictions.
 
 ## Initial preparations
 
-Initially you need to run 
+You may install all necessary environment via 
+
+```python
+pip3 install --no-cache-dir -r requirements.txt
+```
+
+Initially for loading data you need to run 
 
 `python3 ./src/data_loader.py`
+
 
 ## Training part
 
