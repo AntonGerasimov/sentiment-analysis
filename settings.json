@@ -23,12 +23,13 @@
     },
     "tf_idf": {
         "max_features" : "2500",
-        "min_df" : "0.4",
-        "max_df" : "0.9"
+        "min_df" : "100",
+        "max_df" : "0.95"
     },
     "log_reg" :{
+        "max_iter" : "1000",
         "C": "1.0", 
-        "penalty": "l2"
+        "penalty": "l1"
     },
     "inference": {
         "table_name": "test.csv",
