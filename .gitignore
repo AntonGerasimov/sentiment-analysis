@@ -1,3 +1,4 @@
 /data/
-/output/
+/outputs/
 .DS_Store
+notebooks/**
