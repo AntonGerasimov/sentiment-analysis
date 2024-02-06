@@ -91,9 +91,9 @@ def save_metrics(ground_truth, prediction):
     metric_text += generate_metric_text(model_name, "accuracy", accuracy)
     
     pos_label = 'negative'
-    recall = recall_score(ground_truth, prediction, pos_label=pos_label)
+    recall = round(recall_score(ground_truth, prediction, pos_label=pos_label)*100, 1)
     metric_text += generate_metric_text(model_name, "recall", recall)
-    f1 = f1_score(ground_truth, prediction, pos_label=pos_label)
+    f1 = round(f1_score(ground_truth, prediction, pos_label=pos_label)* 100, 1)
     metric_text += generate_metric_text(model_name, "f1 score", f1)
     
     with open(metric_path, 'w') as file:
