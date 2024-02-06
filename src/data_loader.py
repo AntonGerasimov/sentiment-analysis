@@ -10,10 +10,6 @@ import logging
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
-def get_project_dir(sub_dir: str) -> str:
-    """Return path to a project subdirectory."""
-    return os.path.abspath(os.path.join(os.path.dirname(__file__), sub_dir))
-
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
 ROOT_DIR = os.path.dirname(CURRENT_DIR)
 
