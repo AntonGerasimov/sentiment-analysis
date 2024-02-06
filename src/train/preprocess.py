@@ -8,7 +8,6 @@ import re
 
 import json
 
-
 import nltk
 nltk.download('stopwords')
 nltk.download('punkt')
