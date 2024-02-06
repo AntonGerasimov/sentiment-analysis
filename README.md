@@ -28,7 +28,7 @@ I used nlkt.stopwords to identify stopwords.
 
 Then I remove words, that contains 3 or less characters.
 
-In common_words notebook you can see initialization of common_words, by which I mean most used words, common for both 'positive' and 'negative' reviews. I calculate most used words independently and then find intersection. As you can see, both datasets contains a lot of words 'film', 'cinema', which is quite obvious. But, on another hand, they contains a lot of words 'good'. It's contrintuitive from the first sight, but we understand, that, for example, 'negative' reviews may contain phrases like 'I thought it's a good movie'/'This is not a good movie' etc.
+In common_words notebook you can see initialization of common_words, by which I mean most used words, common for both 'positive' and 'negative' reviews. I calculate most used words independently and then find intersection. As you can see, both datasets contains a lot of words 'film', 'cinema', which is quite obvious. But, on the other hand, they contains a lot of words 'good'. It's contrintuitive from the first sight, but we understand, that, for example, 'negative' reviews may contain phrases like 'I thought it's a good movie'/'This is not a good movie' etc.
 
 Firstly, you need to find common words of preprocessed data, and then to make preprocess itself. The difference is as follows: when I find common words, I work with text only. In preprocessing part I make tokenization after converting to lowercases. I think it's a good approach, as we delete stopwords and commonwords as tokens, and it means that more words will be deleted.
 
