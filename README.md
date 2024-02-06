@@ -93,10 +93,7 @@ In my python scripts I got 87.2% mean cross validation accuracy on train dataset
 - recall = 87.1%
 - f1 score = 87.4%
 
-This results are a little bit worse, than in find_best_model notebook. This can be caused by several reasons: 
-
-- somewhere in the code I didn't consider randomization properly
-- 
+This results are a little bit worse, than in find_best_model notebook. The cause of this difference is not clear for me.
 
 I think, my model gives quite a good performance. It may be improved with help of using neuron networks or maybe by better feature engineering, i.e. finding more common_words, using different min_df and max_df for tf-idf etc. However, this approaches requires a lot of more research. As the first step, I suppose my model is good.
 
