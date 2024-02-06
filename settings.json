@@ -22,9 +22,9 @@
         "test_name" : "test.csv"
     },
     "tf_idf": {
-        "max_features" : "2500",
-        "min_df" : "100",
-        "max_df" : "0.95"
+        "max_features" : "2000",
+        "min_df" : "7",
+        "max_df" : "0.8"
     },
     "log_reg" :{
         "max_iter" : "1000",
