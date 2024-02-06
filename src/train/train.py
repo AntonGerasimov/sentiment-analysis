@@ -61,13 +61,12 @@ C = float(conf['log_reg']['C'])
 penalty = conf['log_reg']['penalty']
 
 logging.info('Training the model')
-#model_lg = LogisticRegression(max_iter = max_iter, C = C, penalty = penalty, solver = 'saga', random_state = 42)
-model_lg = LogisticRegression(max_iter = 1000, C = C, penalty = penalty, solver = 'saga', random_state = 42)
+model_lg = LogisticRegression(max_iter = max_iter, C = C, penalty = penalty, solver = 'liblinear', random_state = 42)
 model_lg.fit(X_train_tfidf_vector, y_train)
 
 model_lg_acc = cross_val_score(estimator=model_lg, X=X_train_tfidf_vector, y=y_train, cv=5, n_jobs=-1)
 mean_acc = np.mean(model_lg_acc)
-logging.info(f"The model mean cross validation accuracy is {round(mean_acc,3)}")
+logging.info(f"The model mean cross validation accuracy is {round(mean_acc*100,1)}")
 
 model = model_lg
 model_filename = os.path.join(MODEL_DIR, conf['general']['model_name'])
@@ -78,36 +77,3 @@ vectorizer = tfidf_vectorizer
 vectorizer_filename = os.path.join(VECTORIZER_DIR, conf['general']['vectorizer_name'])
 with open(vectorizer_filename, 'wb') as file:
     pickle.dump(vectorizer, file)
-
-
-"""
-
-class Training():
-    def __init__ (self, data, model):
-        self.data = data 
-        self.model = model
-        self.vectorizer = vectorizer
-    
-    def run_training(self):
-        logging.info("Running training")
-        
-    def train(self):
-        logging.info("")
-        
-    def save(self, model_filename, vectorizer_filename) -> None:
-        logging.info("Saving the model")
-        with open(model_filename, 'wb') as file:
-            pickle.dump(self.model, file)
-            
-        logging.info("Saving the vectorizer")    
-        with open(vectorizer_filename, 'wb') as file:
-            pickle.dump(self.vectorizer, file)
-
-    def main(self):
-        model_filename = os.path.join(MODEL_DIR, conf['general']['model_name'])
-        vectorizer_filename = os.path.join(VECTORIZER_DIR, conf['general']['vectorizer_name'])
-        self.save(model_filename, vectorizer_filename)
-        
-        
-        
-        """
