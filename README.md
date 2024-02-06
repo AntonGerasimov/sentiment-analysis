@@ -15,7 +15,16 @@ As parts of data cleaning I use
 - removing html tags
 - removing non alphabetic symbols
 - converting all characters to lowercases
-- removing stopwords (most common words of english language, such as 'the', 'of' etc) 
+- removing stopwords 
+
+Let me describe removing stopwords in details. Stopwords are common words include articles, conjuntions, prepositions and pronouns (such as 'the', 'of', 'is', 'at', 'which' etc). Removing stopwords helps us to
+
+- Remove some words with no meaning
+- Reduce dataset size
+- Improve model performance
+- Remove noise from data
+
+I used nlkt.stopwords to identify stopwords.
 
 Then I remove words, that contains 3 or less characters.
 
@@ -27,14 +36,15 @@ This notebooks code is in save_common_words.py and preprocess.py.
 
 ## Lemmatization vs Stemming
 
-You can find brief comparation of this methods in lemmatization_vs_stemming notebook.
+You can find brief comparison of this methods in lemmatization_vs_stemming notebook.
 
 Quite commonly, I chose lemmatization over stemming.
 There are several reasons for that:
 
--
--
--
+- Lemmatization considers the context and uses morphological analysis of words. It removes inflectional endings only. It leads to better semantic analysis. Stemming may lose actual meaning of words (see short examples in notebook)
+- Overall, lemmatization is more accurate than stemming, because stemming simply chop off the ends of words. It can lead to incorrect generalizations and provide us with more false positives or negatives. On the other hand, lemmatization uses a vocabulary and morphological analysis, reducing the chances of errors
+- Lemmatization is better at dealing with irregular words. For example, with lemmatization 'went' transforms to 'go'
+- Lemmatization provides us with better readability (see notebook examples)
 
 
 ## Bag of words vs TF-IDF
@@ -45,15 +55,35 @@ I compared tf-idf with different max_features parameters and bag of words. As yo
 
 For my calculations in train.py I use tf-idf with max_features = 2000. You can change this parameter (and min_df and max_df also) in settings.json.
 
-In common words notebook I found, that there are a lot of words, that are presented in only one copy (unique words) in reviews. We can't really predict impact of this words on outcome. min_df = 7 removes this rare words. max_df = 1.0 is a default value.
+In common words notebook I found, that there are a lot of words, that are presented in only one copy (unique words) in reviews. We can't really predict impact of this words on outcome. min_df = 7 removes this rare words. max_df = 0.95 (close to default value 1.0). It cut's off words, that appears too often. I already deleted most frequently common words. With help of this parameter, it cuts off even more frequently used words. From my experience values between 0.9 and 1.0 have no impact on final metrics. I chose 'middle' value, because for me it looks reasonable to exclude most frequently used words. We may not use common_words function and just use max_df, but my common_words are part of EDA also. common words notebook shows this words in train data.
+
+Summing up, tf-idf with max_features = 2000, min_df = 7, max_df = 0.95 have almost same metrics, but a lot higher computational performance.
+
+## Preprocessing pipeline
+
+As was written above, in preprocessing pipeline I make tokenization after converting to lowercases and then I remove stopwords, small words. For tokenization I use nltk.tokenize.word_tokenize. It is a common package for tokenization. 
 
 ## Finding best model
 
-You can find comparation of the models in find_best_model notebok. I found, that in my case the best model is Logistic Regression. It shows best metrics and it evaluates faster than others.
+In my research I got the following results for metrics on inference data:
 
-In my train.py logistic regression shows
+- Naive Bayes.
+Accuracy: 82.5%.
+Recall: 83.6%.
+F1-score: 82.7%.
 
-- accuracy: 
+- Decision tree.
+Accuracy: 75.5%.
+Recall: 70.8%.
+F1-score: 74.3%.
+
+- Logistic regression.
+Accuracy: 88.0%.
+Recall: 87.6%.
+F1-score: 88.0%.
+
+You can find comparation of the models in find_best_model notebok. I found, that in my case the best model is Logistic Regression. It shows the best metrics and it evaluates faster than others. Decision tree and Naive bayes got less than 85% in my case. Maybe this can be reduced with another vectorization parameters, but it's not obvious that this models may show metrics much higher than logistic regression. As was written previously, I think, that if we want all metrics 95+ %, we need to make neuron network with huge amount of neurons, but even evaluation training of such network could take days.
+
 
 ## Python scripts
 
