@@ -1,4 +1,4 @@
-# Final project epam ds course
+# Sentiment analysis of movie reviews
 
 All of the following were tested via macos environment
 
